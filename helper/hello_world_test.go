@@ -30,6 +30,18 @@ func TestHelloWorldKhannedy(t *testing.T) {
 
 }
 
+// tidak perlu menambah-nambah function test, gunakan table test
+func TestHelloWorldKurniawan(t *testing.T) {
+	result := HelloWorld("Kurniawan")
+
+	if result != "Hello Kurniawan" {
+		t.Fatal("Result must be 'Hello Kurniawan'")
+	}
+
+	fmt.Println("TestHelloWorldKurniawan Done")
+
+}
+
 func TestHelloWorldAssert(t *testing.T) {
 	result := HelloWorld("Eko")
 	assert.Equal(t, "Hello Eko", result, "Result must be 'Hello Eko'")
@@ -69,4 +81,58 @@ func TestSubTest(t *testing.T) {
 		result := HelloWorld("Kurniawa")
 		require.Equal(t, "Hello Kurniawa", result, "Result must be 'Hello Kurniawa'")
 	})
+
+	// tidak perlu menambah-nambah subtest, gunakan table test
+	t.Run("Khannedy", func(t *testing.T)  {
+		result := HelloWorld("Khannedy")
+		require.Equal(t, "Hello Khannedy", result, "Result must be 'Hello Khannedy'")
+	})
 }
+
+func TestHelloWorldTable(t *testing.T) {
+	tests := []struct{
+		name string
+		request string
+		expected string
+	}{
+		{
+			name: "HelloWorld(Eko)",
+			request: "Eko",
+			expected: "Hello Eko",
+		},
+		{
+			name: "HelloWorld(Kurniawan)",
+			request: "Kurniawan",
+			expected: "Hello Kurniawan",
+		},
+		{
+			name: "HelloWorld(Khannedy)",
+			request: "Khannedy",
+			expected: "Hello Khannedy",
+		},
+		{
+			name: "HelloWorld(Budi)",
+			request: "Budi",
+			expected: "Hello Budi",
+		},
+		{
+			name: "HelloWorld(Joko)",
+			request: "Joko",
+			expected: "Hello Joko",
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name,func(t *testing.T) {
+			result := HelloWorld(test.request)
+			require.Equal(t, test.expected, result)
+		})
+	}
+}
+
+
+
+
+
+
+
