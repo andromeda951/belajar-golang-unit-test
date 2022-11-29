@@ -9,7 +9,7 @@ func TestHelloWorldEko(t *testing.T) {
 	result := HelloWorld("Andromeda")
 
 	if result != "Hello Andromeda" {
-		t.Fail()
+		t.Error("Result must be 'Hello Eko'")
 	}
 
 	fmt.Println("TestHelloWorldEko Done")
@@ -19,7 +19,7 @@ func TestHelloWorldKhannedy(t *testing.T) {
 	result := HelloWorld("Khannedy")
 
 	if result != "Hello Khannedy" {
-		t.FailNow()
+		t.Fatal("Result must be 'Hello Khannedy'")
 	}
 
 	fmt.Println("TestHelloWorldKhannedy Done")
