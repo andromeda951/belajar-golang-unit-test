@@ -58,3 +58,15 @@ func TestMain(m *testing.M) {
 
 	fmt.Println("AFTER UNIT TEST")
 }
+
+func TestSubTest(t *testing.T) {
+	t.Run("Eko", func(t *testing.T)  {
+		result := HelloWorld("Eko")
+		require.Equal(t, "Hello Eko", result, "Result must be 'Hello Eko'")
+	})
+
+	t.Run("Kurniawa", func(t *testing.T)  {
+		result := HelloWorld("Kurniawa")
+		require.Equal(t, "Hello Kurniawa", result, "Result must be 'Hello Kurniawa'")
+	})
+}
