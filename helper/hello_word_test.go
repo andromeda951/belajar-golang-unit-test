@@ -50,3 +50,11 @@ func TestSkip(t *testing.T) {
 	result := HelloWorld("Eko")
 	require.Equal(t, "Hello Eko", result, "Result must be 'Hello Eko'")
 }
+
+func TestMain(m *testing.M) {
+	fmt.Println("BEFORE UNIT TEST")
+
+	m.Run() // eksekusi semua unit test
+
+	fmt.Println("AFTER UNIT TEST")
+}
